@@ -31,7 +31,7 @@ test("form shows success message on submit with form details", async () => {
     userEvent.type(zip, "80023")
     userEvent.click(checkoutButton)
 
-    const successMessage = await screen.getByText(/You have ordered some plants! Woo-hoo!/i)
+    const successMessage = screen.getByText('You have ordered some plants! Woo-hoo!')
     expect(successMessage).toBeInTheDocument();
 
 

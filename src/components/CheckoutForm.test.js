@@ -33,7 +33,7 @@ test("form shows success message on submit with form details", async () => {
 
 
     await waitFor (() => { 
-    const successMessage = screen.getByText('You have ordered some plants! Woo-hoo!')
+    const successMessage = screen.getByText(/You have ordered some plants! Woo-hoo!/i)
     expect(successMessage).toBeInTheDocument();
     })
 

@@ -1,13 +1,15 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import CheckoutForm from "./CheckoutForm";
+import userEvent from '@testing-library/user-event';
+import MutationObserver from 'mutationobserver-shim';
 
 // Write up the two tests here and make sure they are testing what the title shows
 
-test("form header renders", async () => {
+test("form header renders", () => {
     render(<CheckoutForm/>)
-    const header = await screen.getByText('Checkout Form')
-    expect(header).toBeVisible
+    const header = screen.queryByText(/Checkout Form/i)
+    expect(header).toBeInTheDocument();
 });
 
 test("form shows success message on submit with form details", async () => {
@@ -30,7 +32,7 @@ test("form shows success message on submit with form details", async () => {
     userEvent.click(checkoutButton)
 
     const successMessage = await screen.getByText(/You have ordered some plants! Woo-hoo!/i)
-    expect(successMessage).toBeVisible
+    expect(successMessage).toBeInTheDocument();
 
 
 });
